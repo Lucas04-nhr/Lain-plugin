@@ -14,20 +14,11 @@ jobs:
       uses: actions/checkout@main
       with:
         token: ${{ secrets.GH_TOKEN }}
-        
-    - name: Configure GPG Key
-      run: |
-              echo "$GPG_KEY" > gpg_key.asc
-              gpg --import gpg_key.asc
-              rm gpg_key.asc
-  
-  
+          
     - name: Set up Git
       run: |
         git config user.name "Lucas04-nhr"
         git config user.email "lucas04@foxmail.com"
-        git config signingkey ${{ secrets.GPG_KEY_ID }}
-        git config commit.gpgsign true
 
     - name: Set Git Configuration
       run: |
